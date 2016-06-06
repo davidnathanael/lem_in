@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:28:54 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/05/25 18:06:44 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/06/06 16:59:41 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,26 @@
 # include <stdint.h>
 # include <wchar.h>
 
+# define GNL_BUFF_SIZE 1024
+# define GNL_READ 1
+# define GNL_END 0
+# define GNL_ERROR -1
+
+typedef struct		s_gnl
+{
+	int				fd;
+	char			*overflow;
+	struct s_gnl	*next;
+}					t_gnl;
+
 typedef struct	s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+int				get_next_line(int const fd, char **line);
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);

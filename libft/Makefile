@@ -6,7 +6,7 @@
 #    By: ddela-cr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:43:54 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/06/03 13:53:10 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/06/06 17:01:33 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -90,6 +90,7 @@ ft_strupcase.c\
 ft_strlowcase.c\
 ft_isspace.c\
 ft_strcapitalize.c\
+get_next_line.c\
 
 FLAGS	= -Wall -Wextra -Werror
 

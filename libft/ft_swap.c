@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/03 13:49:45 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/06/03 13:52:10 by ddela-cr         ###   ########.fr       */
+/*   Created: 2015/11/30 19:55:03 by ddela-cr          #+#    #+#             */
+/*   Updated: 2015/11/30 20:29:01 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
-
-int main(void)
+void	ft_swap(int *a, int *b)
 {
-	char *buf;
+	int	tmp;
 
-	buf = NULL;
-	while (get_next_line(0, &buf))
-	{
-		ft_printf("%s\n", buf);
-	}
-	return (0);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
