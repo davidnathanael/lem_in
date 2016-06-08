@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 13:50:56 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/06/08 12:22:32 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/06/08 13:10:50 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ LIBFTPRINTF	=	libftprintf/libftprintf.a
 
 SRCBASE		=	\
 				debug.c														\
+				get_data.c													\
 				main.c														\
-				parsing.c													\
 				rooms.c														\
 				utils.c
 
