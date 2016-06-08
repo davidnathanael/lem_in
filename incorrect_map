@@ -1,15 +1,17 @@
-100
+#coomment
+#test
+-100
 ##start
-start 23 3
-room2 16 7
+1 23 3
+2 16 7
 #commentaire
-room3 16 3
-room4 16 5
-room5 9 3
-room6 1 5
-room7 4 8
+3 16 3
+4 16 5
+5 9 3
+6 1 5
+7 4 8
 ##end
-end 9 5
+0 9 5
 0-4
 0-6
 1-3

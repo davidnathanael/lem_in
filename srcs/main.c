@@ -14,12 +14,8 @@
 
 int main(void)
 {
-	char *buf;
+	t_lem_in	*data;
 
-	buf = NULL;
-	while (get_next_line(0, &buf))
-	{
-		ft_printf("%s\n", buf);
-	}
+	data = ft_get_data();
 	return (0);
 }

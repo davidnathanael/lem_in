@@ -13,7 +13,39 @@
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-#include "libft.h"
-#include "ft_printf.h"
+# include <stdlib.h>
+# include "libft.h"
+# include "ft_printf.h"
+
+typedef struct		s_room
+{
+	char			*name;
+	int				x;
+	int				y;
+	int				weight;
+	t_bool			is_occupied;
+	t_list			*linked_rooms;
+}					t_room;
+
+typedef struct		s_lem_in
+{
+	unsigned int	nb_ants;
+	unsigned int	nb_rooms;
+	t_list			*rooms;
+	t_room			*start_room;
+	t_room			*end_room;
+	char			*buf;
+}					t_lem_in;
+
+t_lem_in			*ft_get_data();
+void				ft_handle_command(char *command, t_lem_in *data);
+t_room				*ft_extract_room(char *infos, t_lem_in *data);
+
+t_bool				ft_is_comment(char *str);
+t_bool				ft_is_valid_command(char *str);
+t_bool				ft_is_room(char *str);
+
+
+void 				debug_data(t_lem_in *data);
 
 #endif

@@ -23,6 +23,7 @@ ft_memmove.c\
 ft_memchr.c\
 ft_memcmp.c\
 ft_strlen.c\
+ft_tablen.c\
 ft_wstrlen.c\
 ft_wcharlen.c\
 ft_strdup.c\
@@ -86,6 +87,7 @@ ft_lstdel.c\
 ft_lstadd.c\
 ft_lstiter.c\
 ft_lstmap.c\
+ft_free_str_tab.c\
 ft_strupcase.c\
 ft_strlowcase.c\
 ft_isspace.c\

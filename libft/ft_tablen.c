@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 13:54:06 by ddela-cr          #+#    #+#             */
-/*   Updated: 2015/11/30 17:06:05 by ddela-cr         ###   ########.fr       */
+/*   Created: 2016/06/08 11:19:55 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/06/08 11:19:57 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isdigit(int c)
+unsigned int	ft_tablen(char **tab)
 {
-	if ('0' <= c && c <= '9')
-		return (1);
-	return (0);
-}
+	unsigned int	len;
 
-t_bool	ft_is_number(char *str)
-{
-	unsigned int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
+	len = 0;
+	while (tab[len])
+		len++;
+	return (len);
 }

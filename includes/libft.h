@@ -15,12 +15,18 @@
 
 # include <string.h>
 # include <stdint.h>
+# include <stdlib.h>
 # include <wchar.h>
 
 # define GNL_BUFF_SIZE 1024
 # define GNL_READ 1
 # define GNL_END 0
 # define GNL_ERROR -1
+
+# define TRUE	1
+# define FALSE	0
+
+typedef	unsigned char	t_bool;
 
 typedef struct		s_gnl
 {
@@ -46,6 +52,7 @@ void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t			ft_strlen(const char *s);
+unsigned int	ft_tablen(char **tab);
 int				ft_wstrlen(wchar_t *str);
 int				ft_wcharlen(wint_t wc);
 char			*ft_strdup(const char *s1);
@@ -69,6 +76,7 @@ long long		ft_lltoi(const char *str);
 unsigned long	ft_atoi_uns_long(const char *str);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
+t_bool			ft_is_number(char *str);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
@@ -105,6 +113,8 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+
+void			ft_free_str_tab(char **tab);
 
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void(*del)(void *, size_t));
