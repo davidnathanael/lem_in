@@ -62,12 +62,18 @@ static void     ft_include_link(char *str, t_lem_in *data)
 
 void		ft_get_link_rooms(t_lem_in *data)
 {
-	char *buf;
-	char 	**tab;
+	char   *buf;
+	char   **tab;
 
 	buf = NULL;
-	if (data->buf)
-		buf = data->buf;
+    if (!ft_is_comment(buf) && data->buf)
+    {
+        tab = ft_strsplit(data->buf, '-');
+		if (!ft_is_link(tab, data))
+			return ;
+        ft_include_link(tab[0], data);
+        ft_include_link(tab[1], data);
+    }
 	while (get_next_line(0, &buf))
 	{
         if (ft_is_comment(buf))
