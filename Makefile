@@ -35,7 +35,8 @@ SRCBASE		=	\
 				get_data.c													\
 				main.c														\
 				rooms.c														\
-				utils.c
+				utils.c														\
+				link.c
 
 INCBASE		=	\
 				ft_printf.h													\

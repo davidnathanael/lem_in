@@ -60,54 +60,6 @@ static unsigned int		ft_get_nb_ants()
 	return (nb_ants);
 }
 
-void		ft_get_link_rooms(t_lem_in *data)
-{
-	char *buf;
-	char 	**tab;
-	t_list	*tmp;
-	t_room	*room;
-
-	tmp = data->rooms;
-	buf = NULL;
-	if (data->buf)
-		buf = data->buf;
-	while (get_next_line(0, &buf))
-	{
-		if (!ft_is_link(buf, data))
-			return ;
-		if (!ft_is_comment(buf))
-		{
-			tab = ft_strsplit(buf, '-');
-			while (tmp)
-			{
-				room = tmp->content;
-				if (ft_strcmp(room->name, tab[0]) == 0)
-				{
-					if (!room->linked_rooms)
-						room->linked_rooms = ft_lstnew(tab[1], ft_strlen(tab[1]));
-					else
-						ft_lstadd(&room->linked_rooms, ft_lstnew(tab[1], ft_strlen(tab[1])));
-				}
-				tmp = tmp->next;
-			}
-			tmp = data->rooms;
-			while (tmp)
-			{
-				room = tmp->content;
-				if (ft_strcmp(room->name, tab[1]) == 0)
-				{
-					if (!room->linked_rooms)
-						room->linked_rooms = ft_lstnew(tab[0], ft_strlen(tab[0]));
-					else
-						ft_lstadd(&room->linked_rooms, ft_lstnew(tab[0], ft_strlen(tab[0])));
-				}
-				tmp = tmp->next;
-			}
-		}
-	}
-	ft_printf("OK");
-}
-
 t_lem_in				*ft_get_data()
 {
 	t_lem_in	*data;
