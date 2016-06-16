@@ -40,7 +40,7 @@ t_bool		ft_is_link(char **tab, t_lem_in *data)
 	return (FALSE);
 }
 
-static void     ft_include_link(char *str, t_lem_in *data)
+static void     ft_include_link(char *s1, char *s2, t_lem_in *data)
 {
     t_room *room;
     t_list *tmp;
@@ -49,12 +49,12 @@ static void     ft_include_link(char *str, t_lem_in *data)
 	while (tmp)
 	{
 		room = tmp->content;
-		if (ft_strcmp(room->name, str) == 0)
+		if (ft_strcmp(room->name, s1) == 0)
 		{
 			if (!room->linked_rooms)
-				room->linked_rooms = ft_lstnew(str, ft_strlen(str));
+				room->linked_rooms = ft_lstnew(s2, ft_strlen(s2));
 			else
-				ft_lstadd(&room->linked_rooms, ft_lstnew(str, ft_strlen(str)));
+				ft_lstadd(&room->linked_rooms, ft_lstnew(s2, ft_strlen(s2)));
 		}
 		tmp = tmp->next;
 	}
@@ -71,8 +71,8 @@ void		ft_get_link_rooms(t_lem_in *data)
         tab = ft_strsplit(data->buf, '-');
 		if (!ft_is_link(tab, data))
 			return ;
-        ft_include_link(tab[0], data);
-        ft_include_link(tab[1], data);
+        ft_include_link(tab[0], tab[1], data);
+        ft_include_link(tab[1], tab[0], data);
     }
 	while (get_next_line(0, &buf))
 	{
@@ -81,7 +81,7 @@ void		ft_get_link_rooms(t_lem_in *data)
         tab = ft_strsplit(buf, '-');
 		if (!ft_is_link(tab, data))
 			return ;
-        ft_include_link(tab[0], data);
-        ft_include_link(tab[1], data);
+        ft_include_link(tab[0], tab[1], data);
+        ft_include_link(tab[1], tab[0], data);
 	}
 }
