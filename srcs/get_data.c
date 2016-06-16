@@ -61,6 +61,48 @@ static unsigned int		ft_get_nb_ants()
 	return (nb_ants);
 }
 
+static void		*ft_get_link_rooms(t_lem_in *data)
+{
+	char *buf;
+	char 	**tab;
+	t_list	*tmp;
+
+	tmp = data->rooms;
+	buf = NULL;
+	if (data->buf)
+		buf = data->buf;
+	while (get_next_line(0, &buf))
+	{
+		if (!ft_is_link(buf, data))
+			return (NULL);
+		tab = ft_strsplit(buf, '-');
+		while (tmp)
+		{
+			if (ft_strcmp(tmp->content->name, tab[0]) == 0)
+			{
+				if (!tmp->content->linked_rooms)
+					tmp->content->linked_rooms = ft_lstnew(tab[1], ft_strlen(tab[1]));
+				else
+					ft_lstadd(&tmp->content->linked_rooms, ft_lstnew(tab[1], ft_strlen(tab[1])));
+			}
+			tmp = tmp->next;
+		}
+		tmp = data->rooms;
+		while (tmp)
+		{
+			if (ft_strcmp(tmp->content->name, tab[1]) == 0)
+			{
+				if (!tmp->lcontent->inked_rooms)
+					tmp->lcontent->inked_rooms = ft_lstnew(tab[0], ft_strlen(tab[0]));
+				else
+					ft_lstadd(&tmp->content->linked_rooms, ft_lstnew(tab[0], ft_strlen(tab[0])));
+			}
+			tmp = tmp->next;
+		}
+	}
+
+}
+
 t_lem_in				*ft_get_data()
 {
 	t_lem_in	*data;
@@ -74,6 +116,7 @@ t_lem_in				*ft_get_data()
 	data->end_room = NULL;
 	data->rooms = ft_get_rooms(data);
 
+	ft_get_link_rooms(data);
 	debug_data(data);
 	return NULL;
 }

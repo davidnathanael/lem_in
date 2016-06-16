@@ -44,6 +44,7 @@ t_room				*ft_extract_room(char *infos, t_lem_in *data);
 t_bool				ft_is_comment(char *str);
 t_bool				ft_is_valid_command(char *str);
 t_bool				ft_is_room(char *str);
+t_bool				ft_is_link(char *str, t_lem_in *data);
 
 
 void 				debug_data(t_lem_in *data);
