@@ -45,10 +45,26 @@ t_room	*ft_extract_room(char *infos, t_lem_in *data)
 	room->name = ft_strdup(tab[0]);
 	room->x = ft_atoi(tab[1]);
 	room->y = ft_atoi(tab[2]);
-	room->weight = 0;
+	room->weight = INITIAL_WEIGHT;
 	room->is_occupied = FALSE;
 	room->linked_rooms = NULL;
 	data->nb_rooms++;
 	ft_free_str_tab(tab);
 	return (room);
+}
+
+t_room		*ft_get_room_by_name(char *name, t_list *rooms)
+{
+	t_list	*tmp;
+	t_room	*room;
+
+	tmp = rooms;
+	while (tmp)
+	{
+		room = tmp->content;
+		if (ft_strcmp(room->name, name) == 0)
+			return (room);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }

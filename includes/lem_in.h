@@ -17,6 +17,8 @@
 # include "libft.h"
 # include "ft_printf.h"
 
+# define INITIAL_WEIGHT	-1
+
 typedef struct		s_room
 {
 	char			*name;
@@ -40,6 +42,7 @@ typedef struct		s_lem_in
 t_lem_in			*ft_get_data();
 void				ft_handle_command(char *command, t_lem_in *data);
 t_room				*ft_extract_room(char *infos, t_lem_in *data);
+t_room				*ft_get_room_by_name(char *name, t_list *rooms);
 
 t_bool				ft_is_comment(char *str);
 t_bool				ft_is_valid_command(char *str);

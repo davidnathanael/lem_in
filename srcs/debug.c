@@ -29,11 +29,11 @@ void debug_data(t_lem_in *data)
 	while (tmp)
 	{
 		room = tmp->content;
-		ft_printf("NAME :  {red}%s -> %p{eoc} | linked to : ", room->name, room);
+		ft_printf("NAME :  {red}%s -> %p{eoc} | weight : %d | linked to : ", room->name, room, room->weight);
 		tmp_link = room->linked_rooms;
 		while (tmp_link)
 		{
-			ft_printf("{red}%s{eoc} |", tmp_link->content);
+			ft_printf("{red}%s{eoc} | ", tmp_link->content);
 			tmp_link = tmp_link->next;
 		}
 		ft_putchar('\n');

@@ -77,6 +77,7 @@ void		ft_get_link_rooms(t_lem_in *data)
 			return ;
 		if (!ft_is_comment(buf))
 		{
+			tmp = data->rooms;
 			tab = ft_strsplit(buf, '-');
 			while (tmp)
 			{
@@ -108,13 +109,32 @@ void		ft_get_link_rooms(t_lem_in *data)
 	ft_printf("OK");
 }
 
-// static void			ft_set_weights(t_lem_in *data)
-// {
-// 	int		weight;
-//
-// 	weight = 0;
-//
-// }
+void				ft_set_weight(t_room *room, int weight, t_list *rooms)
+{
+	t_list	*linked_rooms;
+	t_room	*tmp_room;
+
+	linked_rooms = room->linked_rooms;
+	room->weight = weight;
+	while (linked_rooms)
+	{
+		tmp_room = ft_get_room_by_name(linked_rooms->content, rooms);
+		printf("----%s----\n", tmp_room->name);
+		if (tmp_room->weight == INITIAL_WEIGHT || tmp_room->weight > weight)
+			ft_set_weight(tmp_room, weight + 1, rooms);
+		linked_rooms = linked_rooms->next;
+	}
+}
+
+static void			ft_set_weights(t_lem_in *data)
+{
+	int		weight;
+	t_room	*start;
+
+	weight = 0;
+	start = data->end_room;
+	ft_set_weight(start, weight, data->rooms);
+}
 
 t_lem_in				*ft_get_data()
 {
@@ -129,7 +149,7 @@ t_lem_in				*ft_get_data()
 	data->end_room = NULL;
 	data->rooms = ft_get_rooms(data);
 	ft_get_link_rooms(data);
-	// ft_set_weights(data);
+	ft_set_weights(data);
 	debug_data(data);
 	return (data);
 }
