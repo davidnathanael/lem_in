@@ -75,31 +75,34 @@ void		ft_get_link_rooms(t_lem_in *data)
 	{
 		if (!ft_is_link(buf, data))
 			return ;
-		tab = ft_strsplit(buf, '-');
-		while (tmp)
+		if (!ft_is_comment(buf))
 		{
-			room = tmp->content;
-			if (ft_strcmp(room->name, tab[0]) == 0)
+			tab = ft_strsplit(buf, '-');
+			while (tmp)
 			{
-				if (!room->linked_rooms)
-					room->linked_rooms = ft_lstnew(tab[1], ft_strlen(tab[1]));
-				else
-					ft_lstadd(&room->linked_rooms, ft_lstnew(tab[1], ft_strlen(tab[1])));
+				room = tmp->content;
+				if (ft_strcmp(room->name, tab[0]) == 0)
+				{
+					if (!room->linked_rooms)
+						room->linked_rooms = ft_lstnew(tab[1], ft_strlen(tab[1]));
+					else
+						ft_lstadd(&room->linked_rooms, ft_lstnew(tab[1], ft_strlen(tab[1])));
+				}
+				tmp = tmp->next;
 			}
-			tmp = tmp->next;
-		}
-		tmp = data->rooms;
-		while (tmp)
-		{
-			room = tmp->content;
-			if (ft_strcmp(room->name, tab[1]) == 0)
+			tmp = data->rooms;
+			while (tmp)
 			{
-				if (!room->linked_rooms)
-					room->linked_rooms = ft_lstnew(tab[0], ft_strlen(tab[0]));
-				else
-					ft_lstadd(&room->linked_rooms, ft_lstnew(tab[0], ft_strlen(tab[0])));
+				room = tmp->content;
+				if (ft_strcmp(room->name, tab[1]) == 0)
+				{
+					if (!room->linked_rooms)
+						room->linked_rooms = ft_lstnew(tab[0], ft_strlen(tab[0]));
+					else
+						ft_lstadd(&room->linked_rooms, ft_lstnew(tab[0], ft_strlen(tab[0])));
+				}
+				tmp = tmp->next;
 			}
-			tmp = tmp->next;
 		}
 	}
 	ft_printf("OK");
