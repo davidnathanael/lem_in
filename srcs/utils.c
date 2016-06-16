@@ -43,35 +43,3 @@ t_bool		ft_is_room(char *str)
 	ft_free_str_tab(tab);
 	return (is_room);
 }
-
-t_bool		ft_is_link(char *str, t_lem_in *data)
-{
-	char **tab;
-	t_list	*tmp;
-	t_room	*room;
-
-	if (ft_is_comment(str))
-		return (TRUE);
-	tmp = data->rooms;
-	tab = ft_strsplit(str, '-');
-	if (ft_tablen(tab) != 2)
-		return (FALSE);
-	while (tmp)
-	{
-		room = tmp->content;
-		if (ft_strcmp(tab[0], room->name) == 0)
-			break ;
-		if (tmp->next == NULL)
-			return (FALSE);
-		tmp = tmp->next;
-	}
-	tmp = data->rooms;
-	while (tmp)
-	{
-		room = tmp->content;
-		if (ft_strcmp(tab[1], room->name) == 0 && ft_strcmp(tab[1], tab[0]) != 0)
-			return (TRUE);
-		tmp = tmp->next;
-	}
-	return (FALSE);
-}

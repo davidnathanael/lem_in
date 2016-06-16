@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 13:50:29 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/06/03 13:50:50 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/06/16 16:58:22 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ t_room				*ft_get_room_by_name(char *name, t_list *rooms);
 t_bool				ft_is_comment(char *str);
 t_bool				ft_is_valid_command(char *str);
 t_bool				ft_is_room(char *str);
-t_bool				ft_is_link(char *str, t_lem_in *data);
+void				ft_get_link_rooms(t_lem_in *data);
 
-
-void 				debug_data(t_lem_in *data);
+void				debug_data(t_lem_in *data);
 
 #endif

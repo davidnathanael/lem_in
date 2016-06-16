@@ -60,6 +60,7 @@ static unsigned int		ft_get_nb_ants()
 	return (nb_ants);
 }
 
+<<<<<<< HEAD
 void		ft_get_link_rooms(t_lem_in *data)
 {
 	char *buf;
@@ -136,6 +137,8 @@ static void			ft_set_weights(t_lem_in *data)
 	ft_set_weight(start, weight, data->rooms);
 }
 
+=======
+>>>>>>> 7e2855bc99ea043f4844610a818c4765c1df9720
 t_lem_in				*ft_get_data()
 {
 	t_lem_in	*data;
