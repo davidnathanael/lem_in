@@ -48,6 +48,7 @@ t_bool		ft_is_link(char *str, t_lem_in *data)
 {
 	char **tab;
 	t_list	*tmp;
+	t_room	*room;
 
 	tmp = data->rooms;
 	tab = ft_strsplit(str, '-');
@@ -55,7 +56,8 @@ t_bool		ft_is_link(char *str, t_lem_in *data)
 		return (FALSE);
 	while (tmp)
 	{
-		if (ft_strcmp(tab[0], tmp->content->name) == 0)
+		room = tmp->content;
+		if (ft_strcmp(tab[0], room->name) == 0)
 			break ;
 		if (tmp->next == NULL)
 			return (FALSE);
@@ -64,7 +66,8 @@ t_bool		ft_is_link(char *str, t_lem_in *data)
 	tmp = data->rooms;
 	while (tmp)
 	{
-		if (ft_strcmp(tab[1], tmp->content->name) == 0 && ft_strcmp(tab[1], tab[0]) != 0)
+		room = tmp->content;
+		if (ft_strcmp(tab[1], room->name) == 0 && ft_strcmp(tab[1], tab[0]) != 0)
 			return (TRUE);
 		tmp = tmp->next;
 	}
