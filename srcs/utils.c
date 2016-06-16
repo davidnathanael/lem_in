@@ -50,6 +50,8 @@ t_bool		ft_is_link(char *str, t_lem_in *data)
 	t_list	*tmp;
 	t_room	*room;
 
+	if (ft_is_comment(str))
+		return (TRUE);
 	tmp = data->rooms;
 	tab = ft_strsplit(str, '-');
 	if (ft_tablen(tab) != 2)
