@@ -105,6 +105,14 @@ void		ft_get_link_rooms(t_lem_in *data)
 	ft_printf("OK");
 }
 
+// static void			ft_set_weights(t_lem_in *data)
+// {
+// 	int		weight;
+//
+// 	weight = 0;
+//
+// }
+
 t_lem_in				*ft_get_data()
 {
 	t_lem_in	*data;
@@ -118,6 +126,7 @@ t_lem_in				*ft_get_data()
 	data->end_room = NULL;
 	data->rooms = ft_get_rooms(data);
 	ft_get_link_rooms(data);
+	// ft_set_weights(data);
 	debug_data(data);
 	return (data);
 }

@@ -24,17 +24,26 @@ void debug_data(t_lem_in *data)
 
 	t_list	*tmp = data->rooms;
 	t_room	*room = tmp->content;
+	t_list	*tmp_link = NULL;
+
 	while (tmp)
 	{
 		room = tmp->content;
-		ft_printf("NAME :  {red}%s{eoc} -> x : {green}%d{eoc} | y : {green}%d{eoc}\n",
-		room->name, room->x, room->y);
+		ft_printf("NAME :  {red}%s -> %p{eoc} | linked to : ", room->name, room);
+		tmp_link = room->linked_rooms;
+		while (tmp_link)
+		{
+			ft_printf("{red}%s{eoc} |", tmp_link->content);
+			tmp_link = tmp_link->next;
+		}
+		ft_putchar('\n');
+
 		tmp = tmp->next;
 	}
 	room = data->start_room;
-	ft_printf("START : {red}%s{eoc} -> x : {green}%d{eoc} | y : {green}%d{eoc}\n",
-	room->name, room->x, room->y);
+	ft_printf("START : {red}%s -> %p{eoc} -> x : {green}%d{eoc} | y : {green}%d{eoc}\n",
+	room->name, room, room->x, room->y);
 	room = data->end_room;
-	ft_printf("END :  {red}%s{eoc} -> x : {green}%d{eoc} | y : {green}%d{eoc}\n",
-	room->name, room->x, room->y);
+	ft_printf("END :  {red}%s -> %p{eoc} -> x : {green}%d{eoc} | y : {green}%d{eoc}\n",
+	room->name, room, room->x, room->y);
 }

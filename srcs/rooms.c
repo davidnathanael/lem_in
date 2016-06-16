@@ -23,13 +23,15 @@ void	ft_handle_command(char *command, t_lem_in *data)
 	room = ft_extract_room(buf, data);
 	if (ft_strcmp("##start", command) == 0)
 	{
-		data->start_room = room;
+		// data->start_room = room;
 		ft_lstadd(&data->rooms, ft_lstnew((t_room *)room, sizeof(*room)));
+		data->start_room = data->rooms->content;
 	}
 	else if (ft_strcmp("##end", command) == 0)
 	{
-		data->end_room = room;
+		// data->end_room = room;
 		ft_lstadd(&data->rooms, ft_lstnew((t_room *)room, sizeof(*room)));
+		data->end_room = data->rooms->content;
 	}
 }
 
