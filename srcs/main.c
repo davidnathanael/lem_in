@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-t_room	*ft_get_available_room(t_room *actual_room,t_lem_in *data)
+t_room	*ft_get_available_room(t_room *actual_room, t_lem_in *data)
 {
 	t_list	*linked_rooms;
 	t_room	*room;
@@ -30,23 +30,26 @@ t_room	*ft_get_available_room(t_room *actual_room,t_lem_in *data)
 		}
 		linked_rooms = linked_rooms->next;
 	}
-	printf("RETURN NULL ROOM\n");
+	//ft_printf("RETURN NULL ROOM\n");
 	return (room);
 }
 
-void			ft_move(t_ant *ant, t_lem_in *data)
+void			ft_move(t_list *list_ant, t_lem_in *data)
 {
+	t_ant		*ant;
 	t_room		*room;
 
-//printf("ar: %p\nsr: %p\n", ant->actual_room, data->start_room);
+	ant = list_ant->content;
 	room = ft_get_available_room(ant->actual_room, data);
 	if (!room)
 		return ;
-	printf("%d\n", ant->nb);
-	 printf("%d moved %s -> %s\n", ant->nb, ant->actual_room->name, room->name);
+	ft_printf("ant nb {red}%d{eoc} moved from room {red}%s{eoc} to room {red}%s{eoc}\n", ant->nb, ant->actual_room->name, room->name);
 	ant->actual_room = room;
 	if (room == data->end_room)
+	{
+		ft_printf("ant {red}%d{eoc} arrived\n", ant->nb);
 		data->nb_arrived_ants++;
+	}
 }
 
 static void		lem_in(t_lem_in *data)
@@ -56,11 +59,11 @@ static void		lem_in(t_lem_in *data)
 	ants = data->ants;
 	while (ants)
 	{
-		ft_move(ants->content, data);
+		ft_move(ants, data);
 		ants = ants->next;
 	}
 	ft_check_possible_creation(data);
-	ft_printf("lem_in() out\n");
+	ft_printf("lem_in() out\n\n");
 }
 
 int				main(void)
