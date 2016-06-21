@@ -72,7 +72,6 @@ void				ft_set_weight(t_room *room, int weight, t_list *rooms)
 	while (linked_rooms)
 	{
 		tmp_room = ft_get_room_by_name(linked_rooms->content, rooms);
-		printf("----%s----\n", tmp_room->name);
 		if (tmp_room->weight == INITIAL_WEIGHT || tmp_room->weight > weight)
 			ft_set_weight(tmp_room, weight + 1, rooms);
 		linked_rooms = linked_rooms->next;
