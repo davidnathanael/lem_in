@@ -96,7 +96,10 @@ t_lem_in				*ft_get_data()
 	data = (t_lem_in *)malloc(sizeof(*data));
 	if (!data)
 		return (NULL);
+	data->ants = NULL;
 	data->nb_ants = ft_get_nb_ants();
+	data->nb_arrived_ants = 0;
+	data->nb_created_ants = 0;
 	data->nb_rooms = 0;
 	data->start_room = NULL;
 	data->end_room = NULL;

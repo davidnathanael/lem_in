@@ -47,3 +47,17 @@ void debug_data(t_lem_in *data)
 	ft_printf("END :  {red}%s -> %p{eoc} -> x : {green}%d{eoc} | y : {green}%d{eoc}\n",
 	room->name, room, room->x, room->y);
 }
+
+
+void debug_ants(t_list *ants)
+{
+	t_list	*tmp = ants;
+	t_ant	*ant = tmp->content;
+
+	while (tmp)
+	{
+		ant = tmp->content;
+		printf("ant nb : %d | actual room : %s\n", ant->nb, ant->actual_room->name);
+		tmp = tmp->next;
+	}
+}
