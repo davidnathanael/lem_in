@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-t_room	*ft_get_available_room(t_room *actual_room)
+t_room	*ft_get_available_room(t_room *actual_room,t_lem_in *data)
 {
 	t_list	*linked_rooms;
 	t_room	*room;
@@ -21,24 +21,30 @@ t_room	*ft_get_available_room(t_room *actual_room)
 	room = NULL;
 	while (linked_rooms)
 	{
-		room = linked_rooms->content;
+		room = ft_get_room_by_name(linked_rooms->content, data->rooms);
 		if (!room->is_occupied && room->weight < actual_room->weight)
+		{
+			actual_room->is_occupied = FALSE;
+			room->is_occupied = TRUE;
 			return (room);
+		}
 		linked_rooms = linked_rooms->next;
 	}
+	printf("RETURN NULL ROOM\n");
 	return (room);
 }
 
-void			ft_move(t_ant *ant, t_lem_in *data)
+void			ft_move(t_ant **ant, t_lem_in *data)
 {
 	t_room		*room;
 
-	room = ft_get_available_room(ant->actual_room);
+//printf("ar: %p\nsr: %p\n", ant->actual_room, data->start_room);
+	room = ft_get_available_room((*ant)->actual_room, data);
 	if (!room)
 		return ;
 	printf("%d\n", ant->nb);
-	// printf("%d moved %s -> %s\n", ant->nb, ant->actual_room->name, room->name);
-	ant->actual_room = room;
+	 printf("%d moved %s -> %s\n", ant->nb, ant->actual_room->name, room->name);
+	(*ant)->actual_room = room;
 	if (room == data->end_room)
 		data->nb_arrived_ants++;
 }
@@ -50,7 +56,7 @@ static void		lem_in(t_lem_in *data)
 	ants = data->ants;
 	while (ants)
 	{
-		ft_move(ants->content, data);
+		ft_move(&ants->content, data);
 		ants = ants->next;
 	}
 	ft_check_possible_creation(data);
@@ -67,6 +73,7 @@ int				main(void)
 		ft_printf("ERROR\n");
 		return (-1);
 	}
+	debug_data(data);
 	while (data->nb_created_ants < data->nb_ants)
 		lem_in(data);
 	return (0);

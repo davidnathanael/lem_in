@@ -35,9 +35,7 @@ SRCBASE		=	\
 				debug.c														\
 				get_data.c												\
 				main.c														\
-				roads.c														\
 				rooms.c														\
-				utils.c														\
 				link.c														\
 				error.c														\
 				utils.c

@@ -28,7 +28,7 @@ void	ft_check_possible_creation(t_lem_in *data)
 	t_room		*room;
 	t_ant		*ant;
 
-	room = ft_get_available_room(data->start_room);
+	room = ft_get_available_room(data->start_room, data);
 	ant = NULL;
 	if (!room || data->nb_created_ants >= data->nb_ants)
 		return ;

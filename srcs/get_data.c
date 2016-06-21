@@ -110,6 +110,6 @@ t_lem_in				*ft_get_data()
 	ft_set_weights(data);
 	if (data->start_room->weight == -1)
 		return (NULL);
-	debug_data(data);
+	//debug_data(data);
 	return (data);
 }
