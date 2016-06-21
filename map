@@ -24,13 +24,11 @@
 7-4
 6-5
 
-NAME :  7 -> 0x7fcf92c03d10 | weight : 0 | linked to : 4 | 2 | 6 |
-NAME :  6 -> 0x7fcf92c03c40 | weight : 1 | linked to : 5 | 7 | 0 |
-NAME :  5 -> 0x7fcf92c03ba0 | weight : 2 | linked to : 6 | 3 | 2 |
-NAME :  4 -> 0x7fcf92c03b00 | weight : 1 | linked to : 7 | 2 | 3 |
-NAME :  3 -> 0x7fcf92c03a60 | weight : 2 | linked to : 5 | 4 | 1 |
-NAME :  2 -> 0x7fcf92c03980 | weight : 1 | linked to : 7 | 1 | 4 | 5 |
-NAME :  1 -> 0x7fcf92c03860 | weight : 2 | linked to : 2 | 3 |
-NAME :  0 -> 0x7fcf92c037b0 | weight : 2 | linked to : 6 |
-START : 0 -> 0x7fcf92c037b0 -> x : 23 | y : 3
-END :  7 -> 0x7fcf92c03d10 -> x : 9 | y : 5
+NAME :  7 -> 0x7f881ac03ab0 | weight : 0 | linked to : 4 | 2 | 6 |
+NAME :  6 -> 0x7f881ac039e0 | weight : 1 | linked to : 5 | 7 | 0 |
+NAME :  5 -> 0x7f881ac03940 | weight : 2 | linked to : 6 | 3 | 2 |
+NAME :  4 -> 0x7f881ac038a0 | weight : 1 | linked to : 7 | 2 | 3 | 0 |
+NAME :  3 -> 0x7f881ac03800 | weight : 2 | linked to : 5 | 4 | 1 |
+NAME :  2 -> 0x7f881ac03720 | weight : 1 | linked to : 7 | 1 | 4 | 5 |
+NAME :  1 -> 0x7f881ac03600 | weight : 2 | linked to : 2 | 3 |
+NAME :  0 -> 0x7f881ac03550 | weight : 2 | linked to : 6 | 4 |

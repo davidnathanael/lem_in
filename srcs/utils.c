@@ -43,3 +43,13 @@ t_bool		ft_is_room(char *str)
 	ft_free_str_tab(tab);
 	return (is_room);
 }
+
+t_bool		ft_is_available_room(char *str, t_list *rooms)
+{
+	t_room		*room;
+
+	room = ft_get_room_by_name(str, rooms);
+	if (room->is_occupied)
+		return (FALSE);
+	return (TRUE);
+}

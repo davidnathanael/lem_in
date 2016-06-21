@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 13:50:56 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/06/08 13:10:50 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/06/21 12:44:13 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,14 @@ LIBFT_LIB	=	libft/libft.a
 LIBFTPRINTF	=	libftprintf/libftprintf.a
 
 SRCBASE		=	\
+				ants.c														\
 				debug.c														\
 				get_data.c													\
+				link.c														\
 				main.c														\
+				roads.c														\
 				rooms.c														\
-				utils.c														\
-				link.c
+				utils.c
 
 INCBASE		=	\
 				ft_printf.h													\
@@ -61,7 +63,7 @@ $(NAME):	$(OBJS)
 	echo "\r\033[38;5;15m`cat auteur | sed s/^/\ \ \ \ -/g`\033[0m\033[K"
 
 $(OBJS):	$(SRCS) $(INCS)
-	printf "\r\033[38;5;11m⌛  MAKE   $(NAMEBASE) plz wait ...\033[0m\033[K"
+	printf "\r\033[38;5;11m⌛  MAKE   $(NAMEBASE) please wait ...\033[0m\033[K"
 	mkdir -p $(OBJDIR)
 	make -C $(LIBFT_DIR)
 	(cd $(OBJDIR);															\
@@ -70,7 +72,7 @@ $(OBJS):	$(SRCS) $(INCS)
 	-I $(addprefix ../, $(INCDIR)))
 
 clean:
-	printf "\r\033[38;5;11m⌛  CLEAN  $(NAMEBASE) plz wait ...\033[0m\033[K"
+	printf "\r\033[38;5;11m⌛  CLEAN  $(NAMEBASE) please wait ...\033[0m\033[K"
 	make -C $(LIBFT_DIR) clean
 	if [[ `rm -R $(OBJDIR) &> /dev/null 2>&1; echo $$?` == "0" ]]; then		\
 		echo -en "\r\033[38;5;124m🔘  CLEAN  $(NAMEBASE)\033[0m\033[K";		\
@@ -79,7 +81,7 @@ clean:
 	fi
 
 fclean:		clean
-	printf "\r\033[38;5;11m⌛  FCLEAN $(NAMEBASE) plz wait ...\033[0m\033[K"
+	printf "\r\033[38;5;11m⌛  FCLEAN $(NAMEBASE) please wait ...\033[0m\033[K"
 	make -C $(LIBFT_DIR) fclean
 	if [[ `rm $(NAME) &> /dev/null 2>&1; echo $$?` == "0" ]]; then			\
 		echo -en "\r\033[38;5;124m🔘  FCLEAN $(NAMEBASE)\033[0m\033[K";		\
