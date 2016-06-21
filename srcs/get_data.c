@@ -27,6 +27,8 @@ static t_list			*ft_get_rooms(t_lem_in *data)
 		else if (ft_is_room(buf))
 		{
 			room = ft_extract_room(buf, data);
+			if (!ft_check_coor(data->rooms, room))
+				return (NULL);
 			if (!data->rooms)
 				data->rooms = ft_lstnew((t_room *)room, sizeof(*room));
 			else
@@ -99,8 +101,12 @@ t_lem_in				*ft_get_data()
 	data->start_room = NULL;
 	data->end_room = NULL;
 	data->rooms = ft_get_rooms(data);
+	if (!ft_check_start_end(data))
+		return (NULL);
 	ft_get_link_rooms(data);
 	ft_set_weights(data);
+	if (data->start_room->weight == -1)
+		return (NULL);
 	debug_data(data);
 	return (data);
 }

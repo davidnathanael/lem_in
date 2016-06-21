@@ -17,5 +17,10 @@ int main(void)
 	t_lem_in	*data;
 
 	data = ft_get_data();
+	if (data == NULL)
+	{
+		ft_printf("ERROR\n");
+		return (-1);
+	}
 	return (0);
 }

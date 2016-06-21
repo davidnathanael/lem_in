@@ -32,11 +32,12 @@ LIBFTPRINTF	=	libftprintf/libftprintf.a
 
 SRCBASE		=	\
 				debug.c														\
-				get_data.c													\
+				get_data.c												\
 				main.c														\
 				rooms.c														\
 				utils.c														\
-				link.c
+				link.c														\
+				error.c
 
 INCBASE		=	\
 				ft_printf.h													\

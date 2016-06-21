@@ -49,6 +49,9 @@ t_bool				ft_is_valid_command(char *str);
 t_bool				ft_is_room(char *str);
 void				ft_get_link_rooms(t_lem_in *data);
 
+t_bool				ft_check_coor(t_list *rooms, t_room *room);
+t_bool				ft_check_start_end(t_lem_in *data);
+
 void				debug_data(t_lem_in *data);
 
 #endif
