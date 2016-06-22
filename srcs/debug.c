@@ -57,7 +57,7 @@ void debug_ants(t_list *ants)
 	while (tmp)
 	{
 		ant = tmp->content;
-		printf("ant nb : %d | actual room : %s\n", ant->nb, ant->actual_room->name);
+		printf("ant nb : %d | actual room : %s\n", ant->nb, ant->current_room->name);
 		tmp = tmp->next;
 	}
 }

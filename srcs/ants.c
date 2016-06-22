@@ -18,8 +18,7 @@ t_ant	*ft_create_ant(t_lem_in *data)
 
 	ant = (t_ant *)malloc(sizeof(*ant));
 	ant->nb = ++(data->nb_created_ants);
-	ant->actual_room = data->start_room;
-	//ft_printf("created ant nb %d\n", ant->nb);
+	ant->current_room = data->start_room;
 	return (ant);
 }
 
@@ -38,5 +37,12 @@ t_bool	ft_check_possible_creation(t_lem_in *data)
 	new = ft_lstnew(ant, sizeof(*ant));
 	ft_lstappend(&(data->ants), new);
 	ft_move(new, data);
+	return (TRUE);
+}
+
+t_bool	ft_can_go_to_room(t_room *current, t_room *dest)
+{
+	if (dest->is_occupied || dest->weight >= current->weight)
+		return (FALSE);
 	return (TRUE);
 }
