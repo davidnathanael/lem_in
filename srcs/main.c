@@ -24,12 +24,8 @@ t_room	*ft_get_available_room(t_room *actual_room, t_lem_in *data)
 	while (linked_rooms)
 	{
 		room = ft_get_room_by_name(linked_rooms->content, data->rooms);
-		if (!room->is_occupied && room->weight < actual_room->weight)
-		{
-			actual_room->is_occupied = FALSE;
-			room->is_occupied = (room == data->end_room) ? FALSE : TRUE;
+		if (room->is_occupied == FALSE && room->weight < actual_room->weight)
 			return (room);
-		}
 		linked_rooms = linked_rooms->next;
 	}
 	//ft_printf("RETURN NULL ROOM\n");
@@ -45,14 +41,12 @@ void			ft_move(t_list *list_ant, t_lem_in *data)
 	room = ft_get_available_room(ant->actual_room, data);
 	if (!room)
 		return ;
-	// ft_printf("ant nb {red}%d{eoc} moved from room {red}%s{eoc} to room {red}%s{eoc}\n", ant->nb, ant->actual_room->name, room->name);
 	ft_printf("L%d-%s ", ant->nb, room->name);
+	ant->actual_room->is_occupied = FALSE;
+	room->is_occupied = (room == data->end_room) ? FALSE : TRUE;
 	ant->actual_room = room;
 	if (room == data->end_room)
-	{
 		data->nb_arrived_ants++;
-		// ft_printf("ant {red}%d{eoc} arrived | total arrivals : {red}%d{eoc}\n", ant->nb, data->nb_arrived_ants);
-	}
 }
 
 static void		lem_in(t_lem_in *data)
@@ -65,7 +59,8 @@ static void		lem_in(t_lem_in *data)
 		ft_move(ants, data);
 		ants = ants->next;
 	}
-	ft_check_possible_creation(data);
+	while(ft_check_possible_creation(data))
+		;
 	ft_putchar('\n');
 }
 
@@ -79,9 +74,7 @@ int				main(void)
 		ft_printf("ERROR\n");
 		return (-1);
 	}
-	// debug_data(data);
 	while (data->nb_arrived_ants < data->nb_ants)
 		lem_in(data);
-	ft_printf("END! arrivals : %d\n", data->nb_arrived_ants);
 	return (0);
 }

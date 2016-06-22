@@ -57,7 +57,7 @@ t_room				*ft_get_room_by_name(char *name, t_list *rooms);
 t_room				*ft_get_available_room(t_room *actual_room, t_lem_in *data);
 
 t_ant				*ft_create_ant(t_lem_in *data);
-void				ft_check_possible_creation(t_lem_in *data);
+t_bool				ft_check_possible_creation(t_lem_in *data);
 
 t_bool				ft_is_comment(char *str);
 t_bool				ft_is_valid_command(char *str);
