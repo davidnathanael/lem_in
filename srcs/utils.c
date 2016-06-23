@@ -44,7 +44,7 @@ t_bool		ft_is_room(char *str)
 	else
 	{
 		if ((!ft_is_number(tab[1])) || (!ft_is_number(tab[2])))
-		is_room = FALSE;
+			is_room = FALSE;
 	}
 	ft_free_str_tab(tab);
 	return (is_room);

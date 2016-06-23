@@ -90,13 +90,14 @@ static void			ft_set_weights(t_lem_in *data)
 	ft_set_weight(start, weight, data->rooms);
 }
 
-t_lem_in				*ft_get_data()
+t_lem_in				*ft_get_data(int ac, char **av)
 {
 	t_lem_in	*data;
 
 	data = (t_lem_in *)malloc(sizeof(*data));
 	if (!data)
 		return (NULL);
+	data->verbose = ((ac > 1) && ft_strcmp("-v", av[1]) == 0) ? TRUE : FALSE;
 	data->ants = NULL;
 	data->nb_ants = ft_get_nb_ants();
 	data->nb_arrived_ants = 0;

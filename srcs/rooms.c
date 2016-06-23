@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-void	ft_handle_command(char *command, t_lem_in *data)
+void		ft_handle_command(char *command, t_lem_in *data)
 {
 	t_room	*room;
 	char	*buf;
@@ -24,19 +24,17 @@ void	ft_handle_command(char *command, t_lem_in *data)
 	ft_printf("%s\n", buf);
 	if (ft_strcmp("##start", command) == 0)
 	{
-		// data->start_room = room;
 		ft_lstadd(&data->rooms, ft_lstnew((t_room *)room, sizeof(*room)));
 		data->start_room = data->rooms->content;
 	}
 	else if (ft_strcmp("##end", command) == 0)
 	{
-		// data->end_room = room;
 		ft_lstadd(&data->rooms, ft_lstnew((t_room *)room, sizeof(*room)));
 		data->end_room = data->rooms->content;
 	}
 }
 
-t_room	*ft_extract_room(char *infos, t_lem_in *data)
+t_room		*ft_extract_room(char *infos, t_lem_in *data)
 {
 	char	**tab;
 	t_room	*room;

@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-t_room	*ft_get_available_room(t_room *current_room, t_lem_in *data)
+t_room			*ft_get_available_room(t_room *current_room, t_lem_in *data)
 {
 	t_list	*linked_rooms;
 	t_room	*room;
@@ -40,12 +40,18 @@ void			ft_move(t_list *list_ant, t_lem_in *data)
 	room = ft_get_available_room(ant->current_room, data);
 	if (!room || !ft_can_go_to_room(ant->current_room, room))
 		return ;
-	ft_printf("L%d-%s ", ant->nb, room->name);
+	ft_print_move(ant->current_room, room, ant->nb, data->verbose);
 	ant->current_room->is_occupied = FALSE;
 	room->is_occupied = (room == data->end_room) ? FALSE : TRUE;
 	ant->current_room = room;
 	if (room == data->end_room)
+	{
+		if (data->verbose)
+			ft_printf("{bold}{red} -> ARRIVED!{eoc}\n");
 		data->nb_arrived_ants++;
+	}
+	else
+		(data->verbose) ? ft_putchar('\n') : ft_putchar(' ');
 }
 
 static void		lem_in(t_lem_in *data)
@@ -58,21 +64,22 @@ static void		lem_in(t_lem_in *data)
 		ft_move(ants, data);
 		ants = ants->next;
 	}
-	while(ft_check_possible_creation(data))
+	while (ft_check_possible_creation(data))
 		;
 	ft_putchar('\n');
 }
 
-int				main(void)
+int				main(int ac, char **av)
 {
 	t_lem_in	*data;
 
-	data = ft_get_data();
+	data = ft_get_data(ac, av);
 	if (data == NULL)
 	{
 		ft_printf("ERROR\n");
 		return (-1);
 	}
+	ft_print_data(data);
 	while (data->nb_arrived_ants < data->nb_ants)
 		lem_in(data);
 	return (0);

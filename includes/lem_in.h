@@ -46,9 +46,10 @@ typedef struct		s_lem_in
 	t_room			*start_room;
 	t_room			*end_room;
 	char			*buf;
+	t_bool			verbose;
 }					t_lem_in;
 
-t_lem_in			*ft_get_data();
+t_lem_in			*ft_get_data(int ac, char **av);
 void				ft_move(t_list *list_ant, t_lem_in *data);
 void				ft_handle_command(char *command, t_lem_in *data);
 t_room				*ft_extract_room(char *infos, t_lem_in *data);
@@ -69,7 +70,6 @@ t_bool				ft_is_available_room(char *str, t_list *rooms);
 t_bool				ft_check_coor(t_list *rooms, t_room *room);
 t_bool				ft_check_start_end(t_lem_in *data);
 
-void				debug_data(t_lem_in *data);
-void				debug_ants(t_list *ants);
-
+void				ft_print_move(t_room *from, t_room *to, int nb, t_bool verbose);
+void				ft_print_data(t_lem_in *data);
 #endif
