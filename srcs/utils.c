@@ -15,20 +15,14 @@
 t_bool		ft_is_comment(char *str)
 {
 	if (str && *str == '#' && *(str + 1) != '#')
-	{
-		ft_putendl(str);
 		return (TRUE);
-	}
 	return (FALSE);
 }
 
 t_bool		ft_is_valid_command(char *str)
 {
 	if (ft_strcmp("##start", str) == 0 || ft_strcmp("##end", str) == 0)
-	{
-		ft_putendl(str);
 		return (TRUE);
-	}
 	return (FALSE);
 }
 

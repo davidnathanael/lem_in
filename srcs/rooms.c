@@ -20,8 +20,8 @@ void	ft_handle_command(char *command, t_lem_in *data)
 	buf = NULL;
 	room = NULL;
 	get_next_line(0, &buf);
+	ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
 	room = ft_extract_room(buf, data);
-	ft_printf("%s\n", buf);
 	if (ft_strcmp("##start", command) == 0)
 	{
 		// data->start_room = room;

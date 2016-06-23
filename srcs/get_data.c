@@ -22,11 +22,11 @@ static t_list			*ft_get_rooms(t_lem_in *data)
 	data->rooms = NULL;
 	while (get_next_line(0, &buf))
 	{
+		ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
 		if (ft_is_valid_command(buf))
 			ft_handle_command(buf, data);
 		else if (ft_is_room(buf))
 		{
-			ft_printf("%s\n", buf);
 			room = ft_extract_room(buf, data);
 			if (!ft_check_coor(data->rooms, room))
 				return (NULL);
@@ -46,7 +46,7 @@ static t_list			*ft_get_rooms(t_lem_in *data)
 	return (data->rooms);
 }
 
-static unsigned int		ft_get_nb_ants()
+static unsigned int		ft_get_nb_ants(t_lem_in *data)
 {
 	char	*buf;
 	int		nb_ants;
@@ -54,13 +54,13 @@ static unsigned int		ft_get_nb_ants()
 	buf = NULL;
 	nb_ants = 0;
 	while (get_next_line(0, &buf) && ft_is_comment(buf))
-		ft_printf(buf);
+		ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
+	ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
 	if ((nb_ants = ft_atoi(buf)) <= 0)
 	{
 		ft_printf("Error : Incorrect number of ants.\n");
 		exit(0);
 	}
-	ft_printf("%d\n", nb_ants);
 	return (nb_ants);
 }
 
@@ -98,7 +98,8 @@ t_lem_in				*ft_get_data()
 	if (!data)
 		return (NULL);
 	data->ants = NULL;
-	data->nb_ants = ft_get_nb_ants();
+	data->to_print = NULL;
+	data->nb_ants = ft_get_nb_ants(data);
 	data->nb_arrived_ants = 0;
 	data->nb_created_ants = 0;
 	data->nb_rooms = 0;
@@ -109,7 +110,6 @@ t_lem_in				*ft_get_data()
 		return (NULL);
 	ft_get_link_rooms(data);
 	ft_set_weights(data);
-	ft_putchar('\n');
 	if (data->start_room->weight == -1)
 		return (NULL);
 	//debug_data(data);

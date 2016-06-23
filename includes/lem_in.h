@@ -46,6 +46,7 @@ typedef struct		s_lem_in
 	t_room			*start_room;
 	t_room			*end_room;
 	char			*buf;
+	t_list			*to_print;
 }					t_lem_in;
 
 t_lem_in			*ft_get_data();

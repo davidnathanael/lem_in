@@ -73,6 +73,15 @@ int				main(void)
 		ft_printf("ERROR\n");
 		return (-1);
 	}
+	t_list *tmp;
+
+	tmp = data->to_print;
+	while (tmp)
+	{
+		ft_printf("%s\n", tmp->content);
+		tmp = tmp->next;
+	}
+	ft_putchar('\n');
 	while (data->nb_arrived_ants < data->nb_ants)
 		lem_in(data);
 	return (0);
