@@ -73,16 +73,6 @@ void					ft_set_weight(t_room *room, int weight, t_list *rooms)
 	}
 }
 
-static void				ft_set_weights(t_lem_in *data)
-{
-	int		weight;
-	t_room	*start;
-
-	weight = 0;
-	start = data->end_room;
-	ft_set_weight(start, weight, data->rooms);
-}
-
 t_lem_in				*ft_get_data(int ac, char **av)
 {
 	t_lem_in	*data;
@@ -91,6 +81,7 @@ t_lem_in				*ft_get_data(int ac, char **av)
 	if (!data)
 		return (NULL);
 	data->verbose = ((ac > 1) && ft_strcmp("-v", av[1]) == 0) ? TRUE : FALSE;
+	data->color = ((ac > 1) && ft_strcmp("-c", av[2]) == 0) ? TRUE : FALSE;
 	data->ants = NULL;
 	data->to_print = NULL;
 	data->nb_ants = ft_get_nb_ants(data);
@@ -103,7 +94,7 @@ t_lem_in				*ft_get_data(int ac, char **av)
 	if (!ft_check_start_end(data))
 		return (NULL);
 	ft_get_link_rooms(data);
-	ft_set_weights(data);
+	ft_set_weight(data->end_room, 0, data->rooms);
 	if (data->start_room->weight == -1)
 		return (NULL);
 	return (data);

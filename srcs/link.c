@@ -52,9 +52,9 @@ static void		ft_include_link(char *s1, char *s2, t_lem_in *data)
 		if (ft_strcmp(room->name, s1) == 0)
 		{
 			if (!room->linked_rooms)
-				room->linked_rooms = ft_lstnew(s2, ft_strlen(s2));
+				room->linked_rooms = ft_lstnew(s2, ft_strlen(s2) + 1);
 			else
-				ft_lstadd(&room->linked_rooms, ft_lstnew(s2, ft_strlen(s2)));
+				ft_lstadd(&room->linked_rooms, ft_lstnew(s2, ft_strlen(s2) + 1));
 		}
 		tmp = tmp->next;
 	}
