@@ -19,9 +19,12 @@ t_bool		ft_is_comment(char *str)
 	return (FALSE);
 }
 
-t_bool		ft_is_valid_command(char *str)
+t_bool		ft_is_command(char *str)
 {
-	if (ft_strcmp("##start", str) == 0 || ft_strcmp("##end", str) == 0)
+	int		len;
+
+	len = ft_strlen(str);
+	if (len >= 2 && str[0] == '#' && str[1] == '#')
 		return (TRUE);
 	return (FALSE);
 }

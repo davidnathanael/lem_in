@@ -53,17 +53,19 @@ typedef struct		s_lem_in
 t_lem_in			*ft_get_data(int ac, char **av);
 void				ft_move(t_list *list_ant, t_lem_in *data);
 void				ft_handle_command(char *command, t_lem_in *data);
+t_bool				ft_create_room(char *infos, t_lem_in *data);
 t_room				*ft_extract_room(char *infos, t_lem_in *data);
 t_room				*ft_get_room_by_name(char *name, t_list *rooms);
 
-t_room				*ft_get_available_room(t_room *current_room, t_lem_in *data);
+t_room				*ft_get_available_room(t_room *current_room,
+											t_lem_in *data);
 
 t_ant				*ft_create_ant(t_lem_in *data);
 t_bool				ft_check_possible_creation(t_lem_in *data);
 t_bool				ft_can_go_to_room(t_room *current, t_room *dest);
 
 t_bool				ft_is_comment(char *str);
-t_bool				ft_is_valid_command(char *str);
+t_bool				ft_is_command(char *str);
 t_bool				ft_is_room(char *str);
 void				ft_get_link_rooms(t_lem_in *data);
 t_bool				ft_is_available_room(char *str, t_list *rooms);
@@ -71,6 +73,7 @@ t_bool				ft_is_available_room(char *str, t_list *rooms);
 t_bool				ft_check_coor(t_list *rooms, t_room *room);
 t_bool				ft_check_start_end(t_lem_in *data);
 
-void				ft_print_move(t_room *from, t_room *to, int nb, t_bool verbose);
+void				ft_print_move(t_room *from, t_room *to, int nb,
+								t_bool verbose);
 void				ft_print_data(t_lem_in *data);
 #endif

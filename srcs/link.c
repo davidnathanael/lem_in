@@ -66,9 +66,9 @@ void			ft_get_link_rooms(t_lem_in *data)
 	char	**tab;
 
 	buf = NULL;
-    if (!ft_is_comment(data->buf) && data->buf)
-    {
-        tab = ft_strsplit(data->buf, '-');
+	if (!ft_is_comment(data->buf) && data->buf)
+	{
+		tab = ft_strsplit(data->buf, '-');
 		if (!ft_is_link(tab, data))
 			return ;
 		ft_include_link(tab[0], tab[1], data);
@@ -77,9 +77,9 @@ void			ft_get_link_rooms(t_lem_in *data)
 	while (get_next_line(0, &buf))
 	{
 		ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
-        if (ft_is_comment(buf))
-            continue ;
-        tab = ft_strsplit(buf, '-');
+		if (ft_is_comment(buf))
+			continue ;
+		tab = ft_strsplit(buf, '-');
 		if (!ft_is_link(tab, data))
 			return ;
 		ft_include_link(tab[0], tab[1], data);

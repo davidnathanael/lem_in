@@ -79,16 +79,14 @@ int				main(int ac, char **av)
 		ft_printf("ERROR\n");
 		return (-1);
 	}
-	t_list *tmp;
-
-	tmp = data->to_print;
-	while (tmp)
+	while (data->to_print)
 	{
-		ft_printf("%s\n", tmp->content);
-		tmp = tmp->next;
+		ft_printf("%s\n", data->to_print->content);
+		data->to_print = data->to_print->next;
 	}
 	ft_putchar('\n');
-	ft_print_data(data);
+	if (data->verbose)
+		ft_print_data(data);
 	while (data->nb_arrived_ants < data->nb_ants)
 		lem_in(data);
 	return (0);

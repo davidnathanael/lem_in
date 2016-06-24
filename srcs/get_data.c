@@ -15,32 +15,25 @@
 static t_list			*ft_get_rooms(t_lem_in *data)
 {
 	char	*buf;
-	t_room	*room;
 
 	buf = NULL;
-	room = NULL;
 	data->rooms = NULL;
 	while (get_next_line(0, &buf))
 	{
 		ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
-		if (ft_is_valid_command(buf))
+		if (ft_is_command(buf))
 			ft_handle_command(buf, data);
 		else if (ft_is_room(buf))
 		{
-			room = ft_extract_room(buf, data);
-			if (!ft_check_coor(data->rooms, room))
+			if (!ft_create_room(buf, data))
 				return (NULL);
-			if (!data->rooms)
-				data->rooms = ft_lstnew((t_room *)room, sizeof(*room));
-			else
-				ft_lstadd(&data->rooms, ft_lstnew((t_room *)room, sizeof(*room)));
 		}
 		else if (ft_is_comment(buf))
 			;
 		else
 		{
 			data->buf = ft_strdup(buf);
-			break;
+			break ;
 		}
 	}
 	return (data->rooms);
@@ -64,7 +57,7 @@ static unsigned int		ft_get_nb_ants(t_lem_in *data)
 	return (nb_ants);
 }
 
-void				ft_set_weight(t_room *room, int weight, t_list *rooms)
+void					ft_set_weight(t_room *room, int weight, t_list *rooms)
 {
 	t_list	*linked_rooms;
 	t_room	*tmp_room;
@@ -80,7 +73,7 @@ void				ft_set_weight(t_room *room, int weight, t_list *rooms)
 	}
 }
 
-static void			ft_set_weights(t_lem_in *data)
+static void				ft_set_weights(t_lem_in *data)
 {
 	int		weight;
 	t_room	*start;
@@ -113,6 +106,5 @@ t_lem_in				*ft_get_data(int ac, char **av)
 	ft_set_weights(data);
 	if (data->start_room->weight == -1)
 		return (NULL);
-	//debug_data(data);
 	return (data);
 }

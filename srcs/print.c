@@ -16,7 +16,7 @@ void		ft_print_move(t_room *from, t_room *to, int nb, t_bool verbose)
 {
 	if (verbose)
 	{
-		ft_printf("{bold}Ant number {green}%d{default}", nb);
+		ft_printf("{bold}Ant number {green}%d{default} moved from ", nb);
 		ft_printf("{red}%s", from->name);
 		ft_printf("{default} to {red}%s{eoc}", to->name);
 	}
@@ -29,7 +29,7 @@ static void	ft_print_room(t_room *room, t_lem_in *data)
 	t_list	*linked;
 
 	linked = room->linked_rooms;
-	ft_printf("NAME :  {red}%s{eoc} | weight : %d | linked to : ",
+	ft_printf("Name :  {red}%s{eoc} | Weight : {red}%d{eoc} | Links : ",
 				room->name, room->weight);
 	while (linked)
 	{
@@ -57,4 +57,5 @@ void		ft_print_data(t_lem_in *data)
 		ft_print_room(tmp->content, data);
 		tmp = tmp->next;
 	}
+	ft_putchar('\n');
 }
