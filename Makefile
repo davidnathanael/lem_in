@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 13:50:56 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/06/21 12:44:13 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/06/23 16:58:09 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,12 @@ LIBFTPRINTF	=	libftprintf/libftprintf.a
 
 SRCBASE		=	\
 				ants.c														\
-				debug.c														\
-				get_data.c												\
-				main.c														\
-				rooms.c														\
-				link.c														\
 				error.c														\
+				get_data.c													\
+				link.c														\
+				main.c														\
+				print.c														\
+				rooms.c														\
 				utils.c
 
 INCBASE		=	\

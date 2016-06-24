@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 10:29:35 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/06/08 10:29:36 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/06/23 17:00:02 by adompe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_bool		ft_is_room(char *str)
 	else
 	{
 		if ((!ft_is_number(tab[1])) || (!ft_is_number(tab[2])))
-		is_room = FALSE;
+			is_room = FALSE;
 	}
 	ft_free_str_tab(tab);
 	return (is_room);
