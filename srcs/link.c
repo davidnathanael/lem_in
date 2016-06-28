@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   link.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adompe <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/16 15:50:45 by adompe            #+#    #+#             */
-/*   Updated: 2016/06/24 12:14:37 by adompe           ###   ########.fr       */
+/*   Created: 2016/06/16 15:50:45 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/06/24 12:14:37 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void			ft_get_link_rooms(t_lem_in *data)
 	while (get_next_line(0, &buf))
 	{
 		ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
-		if (ft_is_comment(buf))
+		if (ft_is_comment(buf) || ft_is_command(buf))
 			continue ;
 		tab = ft_strsplit(buf, '-');
 		if (!ft_is_link(tab, data))
