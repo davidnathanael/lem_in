@@ -48,6 +48,7 @@ typedef struct		s_lem_in
 	char			*buf;
 	t_list			*to_print;
 	t_bool			verbose;
+	t_bool			color;
 }					t_lem_in;
 
 t_lem_in			*ft_get_data(int ac, char **av);
@@ -74,6 +75,6 @@ t_bool				ft_check_coor(t_list *rooms, t_room *room);
 t_bool				ft_check_start_end(t_lem_in *data);
 
 void				ft_print_move(t_room *from, t_room *to, int nb,
-								t_bool verbose);
+								t_lem_in *data);
 void				ft_print_data(t_lem_in *data);
 #endif

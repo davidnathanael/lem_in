@@ -12,16 +12,21 @@
 
 #include "lem_in.h"
 
-void		ft_print_move(t_room *from, t_room *to, int nb, t_bool verbose)
+void		ft_print_move(t_room *from, t_room *to, int nb, t_lem_in *data)
 {
-	if (verbose)
+	if (data->verbose)
 	{
 		ft_printf("{bold}Ant number {green}%d{default} moved from ", nb);
 		ft_printf("{red}%s", from->name);
 		ft_printf("{default} to {red}%s{eoc}", to->name);
 	}
 	else
-		ft_printf("{bold}L{green}%d{default}-{red}%s{eoc} ", nb, to->name);
+	{
+		if (data->color)
+			ft_printf("{bold}L{green}%d{default}-{red}%s{eoc}", nb, to->name);
+		else
+			ft_printf("L%d-%s", nb, to->name);
+	}
 }
 
 static void	ft_print_room(t_room *room, t_lem_in *data)

@@ -12,6 +12,29 @@
 
 #include "lem_in.h"
 
+static void				ft_set_options(int ac, char **av, t_lem_in *data)
+{
+	while (--ac)
+	{
+		if (*av[ac] == '-')
+		{
+			while (*(++av[ac]))
+			{
+				if (*av[ac] == 'c')
+					data->color = TRUE;
+				else if (*av[ac] == 'v')
+					data->verbose = TRUE;
+				else
+				{
+					ft_printf("lem_in: illegal option -- %c\n", *(av[ac]));
+					ft_printf("usage: ./lem_in [-vc] < [map]\n");
+					exit(0);
+				}
+			}
+		}
+	}
+}
+
 static t_list			*ft_get_rooms(t_lem_in *data)
 {
 	char	*buf;
@@ -80,8 +103,8 @@ t_lem_in				*ft_get_data(int ac, char **av)
 	data = (t_lem_in *)malloc(sizeof(*data));
 	if (!data)
 		return (NULL);
-	data->verbose = ((ac > 1) && ft_strcmp("-v", av[1]) == 0) ? TRUE : FALSE;
-	data->color = ((ac > 1) && ft_strcmp("-c", av[2]) == 0) ? TRUE : FALSE;
+	data->verbose = FALSE;
+	data->color = FALSE;
 	data->ants = NULL;
 	data->to_print = NULL;
 	data->nb_ants = ft_get_nb_ants(data);
@@ -95,6 +118,7 @@ t_lem_in				*ft_get_data(int ac, char **av)
 		return (NULL);
 	ft_get_link_rooms(data);
 	ft_set_weight(data->end_room, 0, data->rooms);
+	ft_set_options(ac, av, data);
 	if (data->start_room->weight == -1)
 		return (NULL);
 	return (data);

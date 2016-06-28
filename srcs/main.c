@@ -40,7 +40,7 @@ void			ft_move(t_list *list_ant, t_lem_in *data)
 	room = ft_get_available_room(ant->current_room, data);
 	if (!room || !ft_can_go_to_room(ant->current_room, room))
 		return ;
-	ft_print_move(ant->current_room, room, ant->nb, data->verbose);
+	ft_print_move(ant->current_room, room, ant->nb, data);
 	ant->current_room->is_occupied = FALSE;
 	room->is_occupied = (room == data->end_room) ? FALSE : TRUE;
 	ant->current_room = room;
@@ -48,6 +48,8 @@ void			ft_move(t_list *list_ant, t_lem_in *data)
 	{
 		if (data->verbose)
 			ft_printf("{bold}{red} -> ARRIVED!{eoc}\n");
+		else
+			ft_putchar(' ');
 		data->nb_arrived_ants++;
 	}
 	else
