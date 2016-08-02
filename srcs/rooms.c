@@ -22,6 +22,8 @@ void		ft_handle_command(char *command, t_lem_in *data)
 	if (ft_strcmp("##start", command) == 0 || ft_strcmp("##end", command) == 0)
 	{
 		get_next_line(0, &buf);
+		if (!ft_is_room(buf))
+			return ;
 		ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
 		room = ft_extract_room(buf, data);
 		if (ft_strcmp("##start", command) == 0)
@@ -35,8 +37,6 @@ void		ft_handle_command(char *command, t_lem_in *data)
 			data->end_room = data->rooms->content;
 		}
 	}
-	else
-		return ;
 }
 
 t_room		*ft_extract_room(char *infos, t_lem_in *data)
