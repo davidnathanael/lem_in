@@ -6,10 +6,11 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 16:40:27 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/08/09 13:50:05 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/08/09 15:01:51 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "lem_in.h"
 
 static void				ft_set_options(int ac, char **av, t_lem_in *data)
@@ -64,20 +65,21 @@ static t_list			*ft_get_rooms(t_lem_in *data)
 
 static unsigned int		ft_get_nb_ants(t_lem_in *data)
 {
-	char	*buf;
-	int		nb_ants;
+	char			*buf;
+	long long		nb_ants;
 
 	buf = NULL;
 	nb_ants = 0;
 	while (get_next_line(0, &buf) && ft_is_comment(buf))
 		ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
 	ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
-	if ((nb_ants = ft_atoi(buf)) <= 0 || !ft_is_number(buf))
+	nb_ants = ft_lltoi(buf);
+	if (0 >= nb_ants || nb_ants > INT_MAX || !ft_is_number(buf))
 	{
 		ft_printf("Error : Incorrect number of ants.\n");
 		exit(0);
 	}
-	return (nb_ants);
+	return ((unsigned int)nb_ants);
 }
 
 void					ft_set_weight(t_room *room, int weight, t_list *rooms)
