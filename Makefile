@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 13:50:56 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/08/09 13:08:34 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/08/09 14:02:02 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,9 +90,5 @@ fclean:		clean
 	fi
 
 re:			fclean all
-
-debug:		CC = cc
-debug:		FLAGS += --analyze
-debug:		re
 
 .PHONY:		fclean clean re

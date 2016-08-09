@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 16:40:27 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/06/06 16:40:28 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/08/09 13:50:05 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static unsigned int		ft_get_nb_ants(t_lem_in *data)
 	while (get_next_line(0, &buf) && ft_is_comment(buf))
 		ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
 	ft_lstappend(&data->to_print, ft_lstnew(buf, ft_strlen(buf) + 1));
-	if ((nb_ants = ft_atoi(buf)) <= 0)
+	if ((nb_ants = ft_atoi(buf)) <= 0 || !ft_is_number(buf))
 	{
 		ft_printf("Error : Incorrect number of ants.\n");
 		exit(0);

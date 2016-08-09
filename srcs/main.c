@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 13:49:45 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/06/24 12:14:46 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/08/09 14:01:06 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int				main(int ac, char **av)
 		ft_print_data(data);
 	while (data->nb_arrived_ants < data->nb_ants)
 		lem_in(data);
+	free(data);
 	return (0);
 }

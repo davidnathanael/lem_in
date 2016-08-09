@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:28:54 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/06/06 16:59:41 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/08/09 13:49:57 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int						ft_atoi(const char *str);
 long long				ft_lltoi(const char *str);
 unsigned long			ft_atoi_uns_long(const char *str);
 int						ft_isalpha(int c);
+int						ft_strisalpha(char *str);
 int						ft_isdigit(int c);
 t_bool					ft_is_number(char *str);
 int						ft_isalnum(int c);
