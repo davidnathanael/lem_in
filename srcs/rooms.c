@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:49:16 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/06/24 12:16:11 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/08/09 16:01:53 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ t_bool		ft_create_room(char *infos, t_lem_in *data)
 	t_room		*room;
 
 	room = ft_extract_room(infos, data);
-	if (!ft_check_coor(data->rooms, room))
-		return (FALSE);
 	if (!data->rooms)
 		data->rooms = ft_lstnew((t_room *)room, sizeof(*room));
 	else
