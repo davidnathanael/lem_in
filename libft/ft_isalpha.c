@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 13:45:47 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/08/09 13:49:56 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/08/09 14:04:36 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isalpha(int c)
 	return (0);
 }
 
-int ft_strisalpha(char *str)
+int	ft_strisalpha(char *str)
 {
 	int	i;
 
