@@ -6,17 +6,17 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/03 13:50:56 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/06/23 16:58:09 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/08/09 13:08:34 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	lem_in
+NAME		=	lem-in
 
 NAMEBASE    =   $(shell basename $(NAME))
 
 CC			=	gcc
 
-FLAGS		=	-g -Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror
 
 SRCDIR		=	srcs/
 
